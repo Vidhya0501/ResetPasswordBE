@@ -9,12 +9,8 @@ const dotenv=require('dotenv')
 const UserAccountModel=require('./models/UserAccountM')
 
 const app=express()
+app.use(cors())
 app.use(express.json())
-app.use(cors(
-   { origin:["http://localhost:5173"],
-    methods:["POST"],
-    credentials:true}
-))
 app.use(cookieParser())
 dotenv.config()
 
