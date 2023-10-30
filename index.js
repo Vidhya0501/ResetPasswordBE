@@ -9,26 +9,13 @@ const dotenv=require('dotenv')
 const UserAccountModel=require('./models/UserAccountM')
 
 const app=express()
-// app.use(cors(
-//     {
-//         origin:["http://localhost:5173"],
-//         methods:["POST","GET"],
-//         credentials:true
-//     }
-// ))
-
-app.use(function(req, res, next) {
-    // res.header("Access-Control-Allow-Origin", "*");
-    const allowedOrigins = ['http://localhost:5173', 'https://reset-password-49fq.onrender.com'];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
+app.use(cors(
+    {
+        origin:["http://localhost:5173"],
+        methods:["POST","GET"],
+        credentials:true
     }
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-credentials", true);
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
-    next();
-  });
+))
 app.use(express.json())
 app.use(cookieParser())
 dotenv.config()
@@ -120,7 +107,4 @@ app.post('/reset-password/:id/:token',(req,res)=>{
     })
 })
 
-app.listen(3001,()=>{console.log(`Server listening to port 3001`)})
-
-
-
+app.listen(8000,()=>{console.log(`Server listening to port 8000`)})
