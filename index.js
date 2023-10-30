@@ -19,7 +19,7 @@ const app=express()
 
 app.use(function(req, res, next) {
     // res.header("Access-Control-Allow-Origin", "*");
-    const allowedOrigins = ['http://localhost:3001', 'https://reset-password-49fq.onrender.com'];
+    const allowedOrigins = ['http://localhost:5173', 'https://reset-password-49fq.onrender.com'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
          res.setHeader('Access-Control-Allow-Origin', origin);
@@ -121,3 +121,6 @@ app.post('/reset-password/:id/:token',(req,res)=>{
 })
 
 app.listen(3001,()=>{console.log(`Server listening to port 3001`)})
+
+
+
